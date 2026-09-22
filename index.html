@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            margin: 0;
+
+            background-color: #f4f6f8;
+
+        }
+
+
+        header {
+
+            background-color: #1f4e79;
+
+            color: white;
+
+            padding: 25px;
+
+            text-align: center;
+
+            position: relative;
+
+        }
+
+
+        header button {
+
+            position: absolute;
+
+            right: 25px;
+
+            top: 25px;
+
+            padding: 10px 20px;
+
+            background-color: #c0392b;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+        }
+
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1000px;
+
+            margin: 30px auto;
+
+        }
+
+
+        .card {
+
+            background-color: white;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.1);
+
+        }
+
+
+        h2 {
+
+            color: #1f4e79;
+
+            border-bottom: 2px solid #ddd;
+
+            padding-bottom: 8px;
+
+            margin-top: 30px;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-top: 15px;
+
+            font-weight: bold;
+
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 10px;
+
+            margin-top: 5px;
+
+            box-sizing: border-box;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+        }
+
+
+        textarea {
+
+            min-height: 80px;
+
+        }
+
+
+        .save-button {
+
+            margin-top: 25px;
+
+            padding: 12px 25px;
+
+            background-color: #1f4e79;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+        }
+
+
+        #message {
+
+            font-weight: bold;
+
+            margin-top: 15px;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        Student Dashboard
+    </h1>
+
+    <p>
+        Student Academic, Personal and Career Profiling System
+    </p>
+
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
+</header>
+
+
+<div class="container">
+
+<div class="card">
+
+
+<form id="studentForm">
+
+
+    <!-- ========================= -->
+    <!-- PERSONAL INFORMATION -->
+    <!-- ========================= -->
+
+    <h2>
+        Personal Information
+    </h2>
+
+
+    <label>
+        Student Name
+    </label>
+
+    <input
+        type="text"
+        id="name"
+        required
+    >
+
+
+    <label>
+        Register Number
+    </label>
+
+    <input
+        type="text"
+        id="registerNumber"
+        required
+    >
+
+
+    <label>
+        Email
+    </label>
+
+    <input
+        type="email"
+        id="email"
+        required
+    >
+
+
+    <label>
+        Phone Number
+    </label>
+
+    <input
+        type="tel"
+        id="phone"
+    >
+
+
+    <label>
+        Department
+    </label>
+
+    <input
+        type="text"
+        id="department"
+    >
+
+
+    <label>
+        Year of Study
+    </label>
+
+    <select id="year">
+
+        <option value="">
+            Select Year
+        </option>
+
+        <option value="1st Year">
+            1st Year
+        </option>
+
+        <option value="2nd Year">
+            2nd Year
+        </option>
+
+        <option value="3rd Year">
+            3rd Year
+        </option>
+
+        <option value="4th Year">
+            4th Year
+        </option>
+
+    </select>
+
+
+    <!-- ========================= -->
+    <!-- ACADEMIC INFORMATION -->
+    <!-- ========================= -->
+
+    <h2>
+        Academic Information
+    </h2>
+
+
+    <label>
+        Semester
+    </label>
+
+    <select id="semester">
+
+        <option value="">
+            Select Semester
+        </option>
+
+        <option value="1">
+            Semester 1
+        </option>
+
+        <option value="2">
+            Semester 2
+        </option>
+
+        <option value="3">
+            Semester 3
+        </option>
+
+        <option value="4">
+            Semester 4
+        </option>
+
+        <option value="5">
+            Semester 5
+        </option>
+
+        <option value="6">
+            Semester 6
+        </option>
+
+        <option value="7">
+            Semester 7
+        </option>
+
+        <option value="8">
+            Semester 8
+        </option>
+
+    </select>
+
+
+    <label>
+        SGPA
+    </label>
+
+    <input
+        type="number"
+        id="sgpa"
+        min="0"
+        max="10"
+        step="0.01"
+    >
+
+
+    <label>
+        CGPA
+    </label>
+
+    <input
+        type="number"
+        id="cgpa"
+        min="0"
+        max="10"
+        step="0.01"
+    >
+
+
+    <label>
+        Attendance (%)
+    </label>
+
+    <input
+        type="number"
+        id="attendance"
+        min="0"
+        max="100"
+    >
+
+
+    <label>
+        Strong Subjects
+    </label>
+
+    <textarea
+        id="strongSubjects"
+        placeholder="Example: Java, DBMS, Computer Networks"
+    ></textarea>
+
+
+    <!-- ========================= -->
+    <!-- ARREAR INFORMATION -->
+    <!-- ========================= -->
+
+    <h2>
+        Arrear Information
+    </h2>
+
+
+    <label>
+        Arrear Status
+    </label>
+
+    <select id="hasArrear">
+
+        <option value="">
+            Select
+        </option>
+
+        <option value="No">
+            No Arrear
+        </option>
+
+        <option value="Yes">
+            Has Arrear
+        </option>
+
+    </select>
+
+
+    <label>
+        Number of Arrears
+    </label>
+
+    <input
+        type="number"
+        id="arrearCount"
+        min="0"
+    >
+
+
+    <label>
+        Arrear Subjects
+    </label>
+
+    <textarea
+        id="arrearSubjects"
+    ></textarea>
+
+
+    <label>
+        Current Arrear Status
+    </label>
+
+    <select id="arrearStatus">
+
+        <option value="">
+            Select Status
+        </option>
+
+        <option value="Pending">
+            Pending
+        </option>
+
+        <option value="Cleared">
+            Cleared
+        </option>
+
+        <option value="Not Applicable">
+            Not Applicable
+        </option>
+
+    </select>
+
+
+    <!-- ========================= -->
+    <!-- CAREER INFORMATION -->
+    <!-- ========================= -->
+
+    <h2>
+        Career Information
+    </h2>
+
+
+    <label>
+        Career Goal
+    </label>
+
+    <textarea
+        id="careerGoal"
+    ></textarea>
+
+
+    <label>
+        Skills
+    </label>
+
+    <textarea
+        id="skills"
+    ></textarea>
+
+
+    <label>
+        Areas of Interest
+    </label>
+
+    <textarea
+        id="interests"
+    ></textarea>
+
+
+    <!-- ========================= -->
+    <!-- SAVE BUTTON -->
+    <!-- ========================= -->
+
+    <button
+        type="submit"
+        class="save-button"
+    >
+        Save / Update My Profile
+    </button>
+
+
+    <p id="message"></p>
+
+
+</form>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+
+// ==================================================
+// STUDENT LOGIN CHECK
+// ==================================================
+
+
+const token =
+    localStorage.getItem("token");
+
+
+const role =
+    localStorage.getItem("role");
+
+
+const username =
+    localStorage.getItem("username");
+
+
+// If user is not logged in
+// redirect to login page
+
+if (!token || role !== "student") {
+
+    window.location.href =
+        "/login.html";
+
+}
+
+
+// ==================================================
+// FORM SUBMISSION
+// ==================================================
+
+
+document
+    .getElementById("studentForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            // Get values
+
+            const sgpa =
+                parseFloat(
+                    document
+                        .getElementById("sgpa")
+                        .value
+                );
+
+
+            const cgpa =
+                parseFloat(
+                    document
+                        .getElementById("cgpa")
+                        .value
+                );
+
+
+            const attendance =
+                parseFloat(
+                    document
+                        .getElementById("attendance")
+                        .value
+                );
+
+
+            // ==============================
+            // VALIDATION
+            // ==============================
+
+
+            if (
+                !isNaN(sgpa) &&
+                (sgpa < 0 || sgpa > 10)
+            ) {
+
+                alert(
+                    "SGPA must be between 0 and 10."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !isNaN(cgpa) &&
+                (cgpa < 0 || cgpa > 10)
+            ) {
+
+                alert(
+                    "CGPA must be between 0 and 10."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !isNaN(attendance) &&
+                (attendance < 0 ||
+                 attendance > 100)
+            ) {
+
+                alert(
+                    "Attendance must be between 0 and 100."
+                );
+
+                return;
+
+            }
+
+
+            // ==============================
+            // CREATE STUDENT OBJECT
+            // ==============================
+
+
+            const student = {
+
+                name:
+                    document
+                        .getElementById("name")
+                        .value,
+
+
+                registerNumber:
+                    document
+                        .getElementById(
+                            "registerNumber"
+                        )
+                        .value,
+
+
+                email:
+                    document
+                        .getElementById("email")
+                        .value,
+
+
+                phone:
+                    document
+                        .getElementById("phone")
+                        .value,
+
+
+                department:
+                    document
+                        .getElementById(
+                            "department"
+                        )
+                        .value,
+
+
+                year:
+                    document
+                        .getElementById("year")
+                        .value,
+
+
+                semester:
+                    document
+                        .getElementById(
+                            "semester"
+                        )
+                        .value,
+
+
+                sgpa:
+                    document
+                        .getElementById("sgpa")
+                        .value,
+
+
+                cgpa:
+                    document
+                        .getElementById("cgpa")
+                        .value,
+
+
+                attendance:
+                    document
+                        .getElementById(
+                            "attendance"
+                        )
+                        .value,
+
+
+                strongSubjects:
+                    document
+                        .getElementById(
+                            "strongSubjects"
+                        )
+                        .value,
+
+
+                hasArrear:
+                    document
+                        .getElementById(
+                            "hasArrear"
+                        )
+                        .value,
+
+
+                arrearCount:
+                    document
+                        .getElementById(
+                            "arrearCount"
+                        )
+                        .value,
+
+
+                arrearSubjects:
+                    document
+                        .getElementById(
+                            "arrearSubjects"
+                        )
+                        .value,
+
+
+                arrearStatus:
+                    document
+                        .getElementById(
+                            "arrearStatus"
+                        )
+                        .value,
+
+
+                careerGoal:
+                    document
+                        .getElementById(
+                            "careerGoal"
+                        )
+                        .value,
+
+
+                skills:
+                    document
+                        .getElementById("skills")
+                        .value,
+
+
+                interests:
+                    document
+                        .getElementById(
+                            "interests"
+                        )
+                        .value
+
+            };
+
+
+            // ==================================================
+            // MAKE SURE STUDENT USES THEIR OWN REGISTER NUMBER
+            // ==================================================
+
+
+            if (
+                student.registerNumber !==
+                username
+            ) {
+
+                alert(
+                    "Register number must match your student login username."
+                );
+
+                return;
+
+            }
+
+
+            // ==================================================
+            // SEND DATA TO SERVER
+            // ==================================================
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/data",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json",
+
+                                "Authorization":
+                                    token
+
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    student
+                                )
+
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                // ==============================
+                // SERVER ERROR
+                // ==============================
+
+
+                if (!response.ok) {
+
+                    document
+                        .getElementById(
+                            "message"
+                        )
+                        .textContent =
+                            result.message;
+
+                    document
+                        .getElementById(
+                            "message"
+                        )
+                        .style.color =
+                            "red";
+
+                    return;
+
+                }
+
+
+                // ==============================
+                // SUCCESS
+                // ==============================
+
+
+                document
+                    .getElementById(
+                        "message"
+                    )
+                    .textContent =
+                        "Student profile saved successfully!";
+
+
+                document
+                    .getElementById(
+                        "message"
+                    )
+                    .style.color =
+                        "green";
+
+
+                console.log(result);
+
+            }
+
+
+            catch(error) {
+
+                console.error(error);
+
+
+                document
+                    .getElementById(
+                        "message"
+                    )
+                    .textContent =
+                        "Error saving student profile.";
+
+
+                document
+                    .getElementById(
+                        "message"
+                    )
+                    .style.color =
+                        "red";
+
+            }
+
+        }
+    );
+
+
+// ==================================================
+// LOGOUT
+// ==================================================
+
+
+function logout() {
+
+    const currentToken =
+        localStorage.getItem("token");
+
+
+    fetch(
+        "/api/logout",
+        {
+
+            method: "POST",
+
+            headers: {
+
+                "Authorization":
+                    currentToken
+
+            }
+
+        }
+    );
+
+
+    // Remove login information
+
+    localStorage.removeItem("token");
+
+    localStorage.removeItem("role");
+
+    localStorage.removeItem("username");
+
+
+    // Go back to login
+
+    window.location.href =
+        "/login.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
